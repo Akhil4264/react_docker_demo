@@ -7,7 +7,7 @@ function App() {
   const [loadedGoals, setLoadedGoals] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const requestURL = process.env.NODE_ENV === "development" ? 'http://localhost/' : "" ;
+  const requestURL = process.env.NODE_ENV === "development" ? 'http://localhost/' : "http://ec2-13-233-246-208.ap-south-1.compute.amazonaws.com/" ;
 
   useEffect(function () {
     async function fetchData() {
