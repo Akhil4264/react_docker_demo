@@ -7,14 +7,14 @@ function App() {
   const [loadedGoals, setLoadedGoals] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const requestURL = process.env.NODE_ENV === "development" ? 'http://localhost/' : "http://ec2-13-233-246-208.ap-south-1.compute.amazonaws.com/" ;
+  const requestURL = process.env.NODE_ENV === "development" ? 'http://localhost' : "http://ec2-13-233-246-208.ap-south-1.compute.amazonaws.com" ;
 
   useEffect(function () {
     async function fetchData() {
       setIsLoading(true);
 
       try {
-        const response = await fetch(`${requestURL}+goals`);
+        const response = await fetch(`${requestURL}/goals`);
 
         const resData = await response.json();
 
@@ -39,7 +39,7 @@ function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost/goals', {
+      const response = await fetch(`${requestURL}/goals`, {
         method: 'POST',
         body: JSON.stringify({
           text: goalText,
@@ -78,7 +78,7 @@ function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost/goals/' + goalId, {
+      const response = await fetch(`${requestURL}/goals/` + goalId, {
         method: 'DELETE',
       });
 
